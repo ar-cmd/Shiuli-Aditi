@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shiuli</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Karla:wght@400;500&display=swap');
+
+  :root {
+    --dusk: #2b2438;
+    --dusk-deep: #1c1727;
+    --shiuli-white: #fdf9f4;
+    --shiuli-orange: #f28c28;
+    --muted-lilac: #cbb9d6;
+    --line: rgba(253, 249, 244, 0.16);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: radial-gradient(ellipse at top, var(--dusk) 0%, var(--dusk-deep) 70%);
+    color: var(--shiuli-white);
+    font-family: 'Karla', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6vh 6vw 10vh;
+    overflow-x: hidden;
+  }
+
+  .fall { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .petal {
+    position: absolute;
+    top: -5vh;
+    width: 10px;
+    height: 10px;
+    border-radius: 0 60% 0 60%;
+    background: var(--shiuli-orange);
+    opacity: 0.55;
+    animation: drift linear infinite;
+  }
+  @keyframes drift {
+    to { transform: translateY(110vh) rotate(200deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .petal { animation: none; display: none; }
+  }
+
+  header {
+    z-index: 1;
+    text-align: center;
+    margin-bottom: 5vh;
+  }
+
+  .eyebrow {
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: var(--muted-lilac);
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    color: var(--shiuli-white);
+  }
+
+  h1 span {
+    color: var(--shiuli-orange);
+    font-style: italic;
+  }
+
+  main {
+    z-index: 1;
+    max-width: 620px;
+    width: 100%;
+  }
+
+  .message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    line-height: 1.85;
+    font-weight: 400;
+    color: var(--shiuli-white);
+    text-align: left;
+  }
+
+  .message p { margin-bottom: 1.4rem; }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 6vh 0;
+    color: var(--muted-lilac);
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+  .divider span {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+
+  .poem {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+    line-height: 2.1;
+    text-align: center;
+    color: var(--muted-lilac);
+  }
+
+  .poem-title {
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: var(--shiuli-orange);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .signoff {
+    margin-top: 6vh;
+    text-align: right;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--shiuli-white);
+  }
+
+  footer {
+    z-index: 1;
+    margin-top: 8vh;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(203, 185, 214, 0.5);
+  }
+</style>
+</head>
+<body>
+
+<div class="fall" id="fall"></div>
+
+<header>
+  <div class="eyebrow">a small word, offered gently</div>
+  <h1>For <span>Shiuli</span></h1>
+</header>
+
+<main>
+  <section class="message">
+    <p>I have been thinking about what passed between us, and I do not want it to sit there unspoken any longer.</p>
+    <p>I am sorry. Whatever I got wrong, however I made things harder instead of easier between us, that was not my intention, and it does not undo the fact that it happened.</p>
+    <p>I am not writing this to be forgiven on the spot, or to erase the discomfort with a nice page and some nice words. I am writing it because you deserved better than the misunderstanding, and I would rather say so plainly than let it linger unsaid.</p>
+  </section>
+
+  <div class="divider"><span>a few lines</span></div>
+
+  <section class="poem">
+    <span class="poem-title">Shiuli</span>
+    <p>
+      Night flower, you open when no one is looking,<br>
+      give your whole self to the dark, ask nothing back.<br>
+      By morning you have already let go,<br>
+      scattered, unbothered, honest.
+    </p>
+    <p>
+      I want to be that honest.<br>
+      Not the flower that clings past its hour,<br>
+      but the one that says what it means<br>
+      and lets the saying be enough.
+    </p>
+  </section>
+
+  <p class="signoff">with plain apology, and no expectations</p>
+</main>
+
+<footer>shiuli · night jasmine</footer>
+
+<script>
+  const fall = document.getElementById('fall');
+  const count = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 26;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (8 + Math.random() * 10) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    p.style.opacity = 0.3 + Math.random() * 0.4;
+    p.style.transform = `scale(${0.6 + Math.random() * 0.8})`;
+    fall.appendChild(p);
+  }
+</script>
+
+</body>
+</html>
